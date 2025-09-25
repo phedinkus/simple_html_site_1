@@ -3,13 +3,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={plugins:[daisyui]};</script>
+    <script src="https://cdn.jsdelivr.net/npm/daisyui"></script>
   </head>
-  <body>
-    <h1>homepage</h1>
-    <a href="first.html">first page</a>
-    <a href="second.html">second page</a>
-    <a href="third.html">third page</a>
-    <a href="form.html">form page</a>
-    <a href="fourth.html">fourth page</a>
+  <body class="bg-base-100 text-base-content">
+    <div class="container mx-auto p-4">
+      <h1 class="text-4xl font-bold mb-4">homepage</h1>
+      <a href="first.html" class="btn btn-primary mr-2">first page</a>
+      <a href="second.html" class="btn btn-primary mr-2">second page</a>
+      <a href="third.html" class="btn btn-primary mr-2">third page</a>
+      <a href="form.html" class="btn btn-primary mr-2">form page</a>
+      <a href="fourth.html" class="btn btn-primary">fourth page</a>
+    </div>
   </body>
 </html>

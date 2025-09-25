@@ -3,32 +3,40 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { plugins: [daisyui] };</script>
+    <script src="https://cdn.jsdelivr.net/npm/daisyui"></script>
   </head>
-  <body>
-    <h1>form page!</h1>
-
-    <form name="contact" method="POST" data-netlify="true">
-      <p>
-        <label>Your Name: <input type="text" name="name" /></label>
-      </p>
-      <p>
-        <label>Your Email: <input type="email" name="email" /></label>
-      </p>
-      <p>
-        <label>Your Role: <select name="role[]" multiple>
-          <option value="leader">Leader</option>
-          <option value="follower">Follower</option>
-        </select></label>
-      </p>
-      <p>
-        <label>Message: <textarea name="message"></textarea></label>
-      </p>
-      <p>
-        <button type="submit">Send</button>
-      </p>
-    </form>
-
-    <a href="index.html">go back home</a>
+  <body class="bg-base-100 text-base-content">
+    <div class="container mx-auto p-4">
+      <h1 class="text-4xl font-bold mb-4">form page!</h1>
+      <form name="contact" method="POST" data-netlify="true" class="space-y-4">
+        <div>
+          <label class="label"><span class="label-text">Your Name</span></label>
+          <input type="text" name="name" class="input input-bordered w-full"/>
+        </div>
+        <div>
+          <label class="label"><span class="label-text">Your Email</span></label>
+          <input type="email" name="email" class="input input-bordered w-full"/>
+        </div>
+        <div>
+          <label class="label"><span class="label-text">Your Role</span></label>
+          <select name="role[]" multiple class="select select-bordered w-full">
+            <option value="leader">Leader</option>
+            <option value="follower">Follower</option>
+          </select>
+        </div>
+        <div>
+          <label class="label"><span class="label-text">Message</span></label>
+          <textarea name="message" class="textarea textarea-bordered w-full"></textarea>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </form>
+      <a href="index.html" class="btn btn-secondary mt-4">go back home</a>
+    </div>
     <!-- <script>
       const handleSubmit = event => {
         event.preventDefault();
