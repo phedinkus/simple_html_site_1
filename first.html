@@ -3,9 +3,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={plugins:[daisyui]};</script>
+    <script src="https://cdn.jsdelivr.net/npm/daisyui"></script>
   </head>
-  <body>
-    <h1>first page!</h1>
-    <a href="index.html">go back home</a>
+  <body class="bg-base-100 text-base-content">
+    <div class="container mx-auto p-4">
+      <h1 class="text-4xl font-bold mb-4">first page!</h1>
+      <a href="index.html" class="btn btn-secondary">go back home</a>
+    </div>
   </body>
 </html>
