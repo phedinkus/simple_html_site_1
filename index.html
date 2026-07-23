@@ -1,24 +1,64 @@
-
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={plugins:[daisyui]};</script>
-    <script src="https://cdn.jsdelivr.net/npm/daisyui"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Paper Almanac — Index</title>
+    <link rel="stylesheet" href="theme.css" />
   </head>
-  <body class="bg-base-100 text-base-content">
-    <div class="container mx-auto p-4">
-      <h1 class="text-4xl font-bold mb-4">homepage</h1>
-      <a href="first.html" class="btn btn-primary mr-2">first page</a>
-      <a href="second.html" class="btn btn-primary mr-2">second page</a>
-      <a href="third.html" class="btn btn-primary mr-2">third page</a>
-      <a href="form.html" class="btn btn-primary mr-2">form page</a>
-      <a href="fourth.html" class="btn btn-primary">fourth page</a>
-      <a href="" class="btn btn-primary">TODO</a>
-      <a href="" class="btn btn-primary">TODO</a>
-      <a href="" class="btn btn-primary">TODO</a>
-    </div>
+  <body class="almanac">
+    <main class="sheet">
+      <header class="masthead reveal">
+        <a href="index.html" class="masthead__mark">The&nbsp;Paper&nbsp;<em>Almanac</em></a>
+        <span class="masthead__meta">No. 04 &middot; Fair Weather Edition</span>
+      </header>
+
+      <span class="kicker reveal" style="animation-delay: 0.05s">Front Matter</span>
+      <h1 class="display reveal" style="animation-delay: 0.1s">
+        A small press<br />of <span class="ital">odds &amp; ends.</span>
+      </h1>
+      <p class="lede reveal" style="animation-delay: 0.15s">
+        Pages of jokes, verse, and one honest little contact form —
+        set in ink on cream and folded by hand.
+      </p>
+
+      <nav class="directory" style="counter-reset: dir">
+        <a href="first.html" class="entry reveal" style="counter-increment: dir; animation-delay: 0.22s">
+          <span class="entry__title">A Bad Joke</span>
+          <span class="entry__desc">Physics humor, delivered straight.</span>
+          <span class="entry__go">Read <span class="arrow">&rarr;</span></span>
+        </a>
+        <a href="second.html" class="entry reveal" style="counter-increment: dir; animation-delay: 0.29s">
+          <span class="entry__title">Nocturne</span>
+          <span class="entry__desc">Four lines for the small hours.</span>
+          <span class="entry__go">Read <span class="arrow">&rarr;</span></span>
+        </a>
+        <a href="third.html" class="entry reveal" style="counter-increment: dir; animation-delay: 0.36s">
+          <span class="entry__title">Marginalia</span>
+          <span class="entry__desc">A blank leaf, kept on purpose.</span>
+          <span class="entry__go">Read <span class="arrow">&rarr;</span></span>
+        </a>
+        <a href="form.html" class="entry reveal" style="counter-increment: dir; animation-delay: 0.43s">
+          <span class="entry__title">Correspondence</span>
+          <span class="entry__desc">Write to the editors' desk.</span>
+          <span class="entry__go">Compose <span class="arrow">&rarr;</span></span>
+        </a>
+        <a href="fourth.html" class="entry reveal" style="counter-increment: dir; animation-delay: 0.5s">
+          <span class="entry__title">Back Matter</span>
+          <span class="entry__desc">Colophon &amp; closing note.</span>
+          <span class="entry__go">Read <span class="arrow">&rarr;</span></span>
+        </a>
+        <span class="entry entry--soon reveal" style="counter-increment: dir; animation-delay: 0.57s">
+          <span class="entry__title">Next Issue</span>
+          <span class="entry__desc">In the composing room.</span>
+          <span class="entry__go">Soon</span>
+        </span>
+      </nav>
+
+      <footer class="colophon">
+        <span>Set in Fraunces &amp; Spline Sans Mono</span>
+        <span>Printed on the web, 2026</span>
+      </footer>
+    </main>
   </body>
 </html>

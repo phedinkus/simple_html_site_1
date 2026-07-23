@@ -1,0 +1,348 @@
+/* ============================================================
+   The Paper Almanac — a warm editorial risograph theme
+   Shared across every page. One palette, two typefaces.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Spline+Sans+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --paper:        #f3ead9;   /* printed cream stock            */
+  --paper-deep:   #ece0c9;   /* card / panel warmth            */
+  --ink:          #241d18;   /* near-black warm ink            */
+  --ink-soft:     #5b5047;   /* muted body ink                 */
+  --vermilion:    #d1502f;   /* riso red-orange accent         */
+  --vermilion-dk: #b23e21;
+  --teal:         #256b63;   /* riso teal secondary            */
+  --teal-dk:      #1c534d;
+  --line:         #c9bba0;   /* hairline rules                 */
+
+  --display: 'Fraunces', Georgia, serif;
+  --mono:    'Spline Sans Mono', ui-monospace, monospace;
+
+  --shadow-print: 4px 4px 0 var(--ink);
+}
+
+/* ---- Base ------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body.almanac {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  /* layered riso texture: two soft ink blooms + a paper wash */
+  background-image:
+    radial-gradient(60rem 60rem at 12% -10%, rgba(209, 80, 47, 0.10), transparent 60%),
+    radial-gradient(50rem 50rem at 105% 20%, rgba(37, 107, 99, 0.10), transparent 60%),
+    linear-gradient(var(--paper), var(--paper));
+  background-attachment: fixed;
+}
+
+/* fixed grain overlay — never on a scrolling container */
+body.almanac::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.055;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- Layout shell ---------------------------------------- */
+.sheet {
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  position: relative;
+  z-index: 1;
+}
+
+/* Masthead — the almanac banner */
+.masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.masthead__mark {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--ink);
+}
+.masthead__mark em {
+  font-style: italic;
+  color: var(--vermilion);
+}
+.masthead__meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--ink-soft);
+}
+
+/* small caps kicker */
+.kicker {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.85rem;
+}
+.kicker::before { content: "§ "; color: var(--vermilion); }
+
+/* ---- Typography ------------------------------------------ */
+.display {
+  font-family: var(--display);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  font-size: clamp(2.75rem, 9vw, 6rem);
+  margin: 0 0 1rem;
+}
+.display .ital { font-style: italic; font-weight: 500; color: var(--vermilion); }
+
+.lede {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.35;
+  max-width: 40ch;
+  color: var(--ink);
+  margin: 0 0 1.5rem;
+}
+.lede--verse { font-style: italic; }
+
+.prose { max-width: 62ch; color: var(--ink-soft); }
+.prose strong { color: var(--ink); }
+
+/* Decorative pull-rule */
+.rule {
+  border: none;
+  height: 3px;
+  background:
+    repeating-linear-gradient(90deg, var(--ink) 0 14px, transparent 14px 22px);
+  margin: 2.5rem 0;
+  opacity: 0.5;
+}
+
+/* ---- Buttons (ink-block / letterpress) ------------------- */
+.ink-btn {
+  --btn-bg: var(--ink);
+  --btn-fg: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.7rem 1.15rem;
+  color: var(--btn-fg);
+  background: var(--btn-bg);
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-print);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  cursor: pointer;
+}
+.ink-btn:hover  { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+.ink-btn:active { transform: translate(2px, 2px);   box-shadow: 1px 1px 0 var(--ink); }
+.ink-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+
+.ink-btn--red  { --btn-bg: var(--vermilion); --btn-fg: var(--paper); }
+.ink-btn--teal { --btn-bg: var(--teal);      --btn-fg: var(--paper); }
+.ink-btn--ghost {
+  --btn-bg: transparent; --btn-fg: var(--ink);
+  box-shadow: 3px 3px 0 var(--line);
+}
+.ink-btn--ghost:hover { box-shadow: 5px 5px 0 var(--line); }
+.ink-btn .arrow { font-family: var(--display); font-style: italic; }
+
+/* back link */
+.backlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--vermilion);
+  padding-bottom: 2px;
+  transition: color 0.15s ease, gap 0.15s ease;
+}
+.backlink:hover { color: var(--vermilion); gap: 0.85rem; }
+
+/* ---- Index directory grid -------------------------------- */
+.directory {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+.entry {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.4rem 1.4rem 1.55rem;
+  background: var(--paper-deep);
+  border: 2px solid var(--ink);
+  text-decoration: none;
+  color: var(--ink);
+  box-shadow: var(--shadow-print);
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+  overflow: hidden;
+}
+.entry::before {
+  content: counter(dir, decimal-leading-zero);
+  position: absolute;
+  top: 0.6rem; right: 0.85rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-soft);
+}
+.entry__title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.entry__desc {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.entry__go {
+  margin-top: auto;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--vermilion);
+}
+.entry:hover  { transform: translate(-3px, -3px); box-shadow: 7px 7px 0 var(--ink); }
+.entry:hover .entry__go .arrow { margin-left: 0.4rem; }
+.entry .arrow { font-family: var(--display); font-style: italic; transition: margin 0.14s ease; }
+
+/* accent stripe on hover */
+.entry::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 5px;
+  background: var(--teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+.entry:hover::after { transform: scaleX(1); }
+.entry--soon {
+  background: transparent;
+  border-style: dashed;
+  box-shadow: none;
+  cursor: default;
+}
+.entry--soon:hover { transform: none; box-shadow: none; }
+.entry--soon:hover::after { transform: scaleX(0); }
+.entry--soon .entry__title { color: var(--ink-soft); }
+
+/* stagger reveal on load */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal { animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; }
+
+/* ---- Form -------------------------------------------------*/
+.field { margin-bottom: 1.35rem; }
+.field__label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.45rem;
+}
+.field__input,
+.field__select,
+.field__area {
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: var(--paper-deep);
+  border: 2px solid var(--ink);
+  padding: 0.7rem 0.85rem;
+  box-shadow: inset 2px 2px 0 rgba(36, 29, 24, 0.06);
+  transition: box-shadow 0.14s ease, border-color 0.14s ease;
+}
+.field__area { min-height: 8rem; resize: vertical; }
+.field__input:focus,
+.field__select:focus,
+.field__area:focus {
+  outline: none;
+  border-color: var(--vermilion);
+  box-shadow: 3px 3px 0 var(--vermilion);
+}
+.field__input::placeholder,
+.field__area::placeholder { color: var(--ink-soft); opacity: 0.6; }
+
+.form-card {
+  background: var(--paper-deep);
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-print);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  max-width: 34rem;
+}
+
+.hint { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); margin-top: 0.35rem; }
+
+/* ---- Footer ---------------------------------------------- */
+.colophon {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}

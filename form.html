@@ -1,61 +1,53 @@
-
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config = { plugins: [daisyui] };</script>
-    <script src="https://cdn.jsdelivr.net/npm/daisyui"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Correspondence — The Paper Almanac</title>
+    <link rel="stylesheet" href="theme.css" />
   </head>
-  <body class="bg-base-100 text-base-content">
-    <div class="container mx-auto p-4">
-      <h1 class="text-4xl font-bold mb-4">form page!</h1>
-      <form name="contact" method="POST" data-netlify="true" class="space-y-4">
-        <div>
-          <label class="label"><span class="label-text">Your Name</span></label>
-          <input type="text" name="name" class="input input-bordered w-full"/>
-        </div>
-        <div>
-          <label class="label"><span class="label-text">Your Email</span></label>
-          <input type="email" name="email" class="input input-bordered w-full"/>
-        </div>
-        <div>
-          <label class="label"><span class="label-text">Your Role</span></label>
-          <select name="role[]" multiple class="select select-bordered w-full">
-            <option value="leader">Leader</option>
-            <option value="follower">Follower</option>
-          </select>
-        </div>
-        <div>
-          <label class="label"><span class="label-text">Message</span></label>
-          <textarea name="message" class="textarea textarea-bordered w-full"></textarea>
-        </div>
-        <div>
-          <button type="submit" class="btn btn-primary">Send</button>
-        </div>
-      </form>
-      <a href="index.html" class="btn btn-secondary mt-4">go back home</a>
-    </div>
-    <!-- <script>
-      const handleSubmit = event => {
-        event.preventDefault();
+  <body class="almanac">
+    <main class="sheet">
+      <header class="masthead reveal">
+        <a href="index.html" class="masthead__mark">The&nbsp;Paper&nbsp;<em>Almanac</em></a>
+        <span class="masthead__meta">Correspondence &middot; Editors' Desk</span>
+      </header>
 
-        const myForm = event.target;
-        const formData = new FormData(myForm);
+      <span class="kicker reveal" style="animation-delay: 0.05s">Write In</span>
+      <h1 class="display reveal" style="animation-delay: 0.1s">
+        A letter to the <span class="ital">desk.</span>
+      </h1>
+      <p class="lede reveal" style="animation-delay: 0.18s">
+        Corrections, submissions, or a joke worse than ours — we read every one.
+      </p>
 
-        fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(formData).toString()
-        })
-          .then(() => console.log("Form successfully submitted"))
-          .catch(error => alert(error));
-      };
+      <div class="form-card reveal" style="animation-delay: 0.24s">
+        <form name="contact" method="POST" data-netlify="true">
+          <div class="field">
+            <label class="field__label" for="name">Your Name</label>
+            <input id="name" type="text" name="name" class="field__input" placeholder="e.g. Marlowe Fenn" />
+          </div>
+          <div class="field">
+            <label class="field__label" for="email">Your Email</label>
+            <input id="email" type="email" name="email" class="field__input" placeholder="you@somewhere.co" />
+          </div>
+          <div class="field">
+            <label class="field__label" for="role">Your Role</label>
+            <select id="role" name="role[]" multiple class="field__select">
+              <option value="leader">Leader</option>
+              <option value="follower">Follower</option>
+            </select>
+            <p class="hint">Hold &#8984; / Ctrl to choose more than one.</p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="message">Message</label>
+            <textarea id="message" name="message" class="field__area" placeholder="Say your piece&hellip;"></textarea>
+          </div>
+          <button type="submit" class="ink-btn ink-btn--red">Send it off <span class="arrow">&rarr;</span></button>
+        </form>
+      </div>
 
-      document.querySelector("form")
-        .addEventListener("submit", handleSubmit);
-
-    </script> -->
+      <a href="index.html" class="backlink">&larr; Back to the index</a>
+    </main>
   </body>
 </html>
